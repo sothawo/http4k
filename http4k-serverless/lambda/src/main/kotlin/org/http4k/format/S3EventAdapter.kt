@@ -179,8 +179,8 @@ private fun JsonReader.requestParameters() =
 private fun JsonReader.responseElements() =
     obj({ it -> ResponseElementsEntity(it["xAmzId2"] as? String, it["xAmzRequestId"] as? String) }) {
         when (it) {
-            "xAmzId2" -> nextString()
-            "xAmzRequestId" -> nextString()
+            "xAmzId2", "x-amz-id-2" -> nextString()
+            "xAmzRequestId", "x-amz-request-id" -> nextString()
             else -> error("unknown key")
         }
     }
